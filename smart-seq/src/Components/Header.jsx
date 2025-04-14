@@ -136,326 +136,335 @@ const Header = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-black/30"></div>
       {/* Navigation Bar - now transparent with the hero background showing through */}
       <header className="relative">
-        <div className="container mx-auto px-4 py-4 flex flex-wrap justify-between items-center">
-          <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-white">
-              Smart SE
-              <span className="text-white inline-flex items-center">
-                <img src={SEQ} alt="Seq" className="w-8 h-8 text-white" />
-              </span>
-            </h1>
-          </div>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            {/* Logo and Search - Left */}
+            <div className="flex items-center space-x-4">
+              <h1 className="text-2xl font-bold text-white flex items-center">
+                Smart SE
+                <span className="inline-flex items-center">
+                  <img src={SEQ} alt="Seq" className="w-8 h-8" />
+                </span>
+              </h1>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {/* Home dropdown */}
-            <div className="relative">
-              <a
-                href="#"
-                className="text-white border-b-2 border-white font-medium inline-flex items-center hover:border-b-2 hover:border-white"
-                onMouseEnter={() => setHomeDropdownOpen(true)}
-                onMouseLeave={() => setHomeDropdownOpen(false)}
-              >
-                Home
-              </a>
-              {/* Home Dropdown Menu */}
-              {homeDropdownOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                  onMouseEnter={() => setHomeDropdownOpen(true)}
-                  onMouseLeave={() => setHomeDropdownOpen(false)}
-                >
-                  {agencyOptions.map((option, index) => (
-                    <a
-                      key={index}
-                      href={option.link}
-                      className={`block px-6 py-4 text-white hover:bg-indigo-900 transition ${
-                        option.title === "Creative Agency"
-                          ? "border-l-2 border-white"
-                          : ""
-                      }`}
+              {/* Desktop Navigation - */}
+              <nav className="hidden md:flex items-center justify-center space-x-6">
+                {/* Home dropdown */}
+                <div className="relative">
+                  <a
+                    href="#"
+                    className="text-white border-b-2 border-white font-medium inline-flex items-center hover:border-b-2 hover:border-white"
+                    onMouseEnter={() => setHomeDropdownOpen(true)}
+                    onMouseLeave={() => setHomeDropdownOpen(false)}
+                  >
+                    Home
+                  </a>
+                  {/* Home Dropdown Menu */}
+                  {homeDropdownOpen && (
+                    <div
+                      className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
+                      onMouseEnter={() => setHomeDropdownOpen(true)}
+                      onMouseLeave={() => setHomeDropdownOpen(false)}
                     >
-                      {option.title}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Pages dropdown */}
-            <div className="relative">
-              <a
-                href="#"
-                className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                onMouseEnter={() => setPagesDropdownOpen(true)}
-                onMouseLeave={() => setPagesDropdownOpen(false)}
-              >
-                Pages
-              </a>
-              {/* Pages Dropdown Menu */}
-              {pagesDropdownOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                  onMouseEnter={() => setPagesDropdownOpen(true)}
-                  onMouseLeave={() => setPagesDropdownOpen(false)}
-                >
-                  {pagesOptions.map((option, index) => (
-                    <div key={index} className="relative">
-                      <a
-                        href={option.link}
-                        className={`flex justify-between items-center px-6 py-4 text-white hover:bg-indigo-900 transition`}
-                        onMouseEnter={() => {
-                          if (option.title === "About")
-                            setAboutSubmenuOpen(true);
-                          if (option.title === "Services")
-                            setServicesSubmenuOpen(true);
-                          if (option.title === "Tools")
-                            setToolsSubmenuOpen(true);
-                        }}
-                        onMouseLeave={() => {
-                          if (option.title === "About")
-                            setAboutSubmenuOpen(false);
-                          if (option.title === "Services")
-                            setServicesSubmenuOpen(false);
-                          if (option.title === "Tools")
-                            setToolsSubmenuOpen(false);
-                        }}
-                      >
-                        {option.title}
-                        {option.hasSubmenu && (
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        )}
-                      </a>
-
-                      {/* About Submenu */}
-                      {option.title === "About" &&
-                        aboutSubmenuOpen &&
-                        option.submenuItems.length > 0 && (
-                          <div
-                            className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
-                            onMouseEnter={() => setAboutSubmenuOpen(true)}
-                            onMouseLeave={() => setAboutSubmenuOpen(false)}
-                          >
-                            {option.submenuItems.map((subItem, subIndex) => (
-                              <a
-                                key={subIndex}
-                                href={subItem.link}
-                                className="block px-6 py-4 text-white hover:bg-indigo-900 transition"
-                              >
-                                {subItem.title}
-                              </a>
-                            ))}
-                          </div>
-                        )}
+                      {agencyOptions.map((option, index) => (
+                        <a
+                          key={index}
+                          href={option.link}
+                          className={`block px-6 py-4 text-white hover:bg-indigo-900 transition ${
+                            option.title === "Creative Agency"
+                              ? "border-l-2 border-white"
+                              : ""
+                          }`}
+                        >
+                          {option.title}
+                        </a>
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* Portfolio dropdown */}
-            <div className="relative">
-              <a
-                href="#"
-                className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                onMouseEnter={() => setPortfolioDropdownOpen(true)}
-                onMouseLeave={() => setPortfolioDropdownOpen(false)}
-              >
-                Portfolio
-              </a>
-              {/* Portfolio Dropdown Menu */}
-              {portfolioDropdownOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                  onMouseEnter={() => setPortfolioDropdownOpen(true)}
-                  onMouseLeave={() => setPortfolioDropdownOpen(false)}
-                >
-                  {portfolioOptions.map((option, index) => (
-                    <div key={index} className="relative">
-                      <a
-                        href={option.link}
-                        className={`flex justify-between items-center px-6 py-4 text-white hover:bg-indigo-900 transition ${
-                          option.title === "Single Portfolio"
-                            ? "border-b border-white/20"
-                            : ""
-                        }`}
-                        onMouseEnter={() => {
-                          if (option.title === "Single Portfolio")
-                            setSinglePortfolioSubmenuOpen(true);
-                        }}
-                        onMouseLeave={() => {
-                          if (option.title === "Single Portfolio")
-                            setSinglePortfolioSubmenuOpen(false);
-                        }}
-                      >
-                        {option.title}
-                        {option.hasSubmenu && (
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                {/* Pages dropdown */}
+                <div className="relative">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
+                    onMouseEnter={() => setPagesDropdownOpen(true)}
+                    onMouseLeave={() => setPagesDropdownOpen(false)}
+                  >
+                    Pages
+                  </a>
+                  {/* Pages Dropdown Menu */}
+                  {pagesDropdownOpen && (
+                    <div
+                      className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
+                      onMouseEnter={() => setPagesDropdownOpen(true)}
+                      onMouseLeave={() => setPagesDropdownOpen(false)}
+                    >
+                      {pagesOptions.map((option, index) => (
+                        <div key={index} className="relative">
+                          <a
+                            href={option.link}
+                            className={`flex justify-between items-center px-6 py-4 text-white hover:bg-indigo-900 transition`}
+                            onMouseEnter={() => {
+                              if (option.title === "About")
+                                setAboutSubmenuOpen(true);
+                              if (option.title === "Services")
+                                setServicesSubmenuOpen(true);
+                              if (option.title === "Tools")
+                                setToolsSubmenuOpen(true);
+                            }}
+                            onMouseLeave={() => {
+                              if (option.title === "About")
+                                setAboutSubmenuOpen(false);
+                              if (option.title === "Services")
+                                setServicesSubmenuOpen(false);
+                              if (option.title === "Tools")
+                                setToolsSubmenuOpen(false);
+                            }}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        )}
-                      </a>
-
-                      {/* Single Portfolio Submenu */}
-                      {option.title === "Single Portfolio" &&
-                        singlePortfolioSubmenuOpen &&
-                        option.submenuItems.length > 0 && (
-                          <div
-                            className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
-                            onMouseEnter={() =>
-                              setSinglePortfolioSubmenuOpen(true)
-                            }
-                            onMouseLeave={() =>
-                              setSinglePortfolioSubmenuOpen(false)
-                            }
-                          >
-                            {option.submenuItems.map((subItem, subIndex) => (
-                              <a
-                                key={subIndex}
-                                href={subItem.link}
-                                className="block px-6 py-4 text-white hover:bg-indigo-900 transition"
+                            {option.title}
+                            {option.hasSubmenu && (
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                               >
-                                {subItem.title}
-                              </a>
-                            ))}
-                          </div>
-                        )}
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M9 5l7 7-7 7"
+                                />
+                              </svg>
+                            )}
+                          </a>
+
+                          {/* About Submenu */}
+                          {option.title === "About" &&
+                            aboutSubmenuOpen &&
+                            option.submenuItems.length > 0 && (
+                              <div
+                                className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
+                                onMouseEnter={() => setAboutSubmenuOpen(true)}
+                                onMouseLeave={() => setAboutSubmenuOpen(false)}
+                              >
+                                {option.submenuItems.map(
+                                  (subItem, subIndex) => (
+                                    <a
+                                      key={subIndex}
+                                      href={subItem.link}
+                                      className="block px-6 py-4 text-white hover:bg-indigo-900 transition"
+                                    >
+                                      {subItem.title}
+                                    </a>
+                                  )
+                                )}
+                              </div>
+                            )}
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* Blog dropdown - added to match the image */}
-            <div className="relative">
-              <a
-                href="#"
-                className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                onMouseEnter={() => setBlogDropdownOpen(true)}
-                onMouseLeave={() => setBlogDropdownOpen(false)}
-              >
-                Blog
-              </a>
-              {/* Blog Dropdown Menu */}
-              {blogDropdownOpen && (
-                <div
-                  className="absolute left-0 mt-2 w-full min-w-max bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                  onMouseEnter={() => setBlogDropdownOpen(true)}
-                  onMouseLeave={() => setBlogDropdownOpen(false)}
-                >
-                  <div className="flex">
-                    {blogOptions.map((category, index) => (
-                      <div key={index} className="w-64 p-4">
-                        <h3 className="text-lg font-medium text-white mb-4">
-                          {category.title}
-                        </h3>
-                        <ul className="space-y-2">
-                          {category.submenuItems.map((item, itemIndex) => (
-                            <li key={itemIndex}>
-                              <a
-                                href={item.link}
-                                className="block text-white/80 hover:text-white py-2"
+                {/* Portfolio dropdown */}
+                <div className="relative">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
+                    onMouseEnter={() => setPortfolioDropdownOpen(true)}
+                    onMouseLeave={() => setPortfolioDropdownOpen(false)}
+                  >
+                    Portfolio
+                  </a>
+                  {/* Portfolio Dropdown Menu */}
+                  {portfolioDropdownOpen && (
+                    <div
+                      className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
+                      onMouseEnter={() => setPortfolioDropdownOpen(true)}
+                      onMouseLeave={() => setPortfolioDropdownOpen(false)}
+                    >
+                      {portfolioOptions.map((option, index) => (
+                        <div key={index} className="relative">
+                          <a
+                            href={option.link}
+                            className={`flex justify-between items-center px-6 py-4 text-white hover:bg-indigo-900 transition ${
+                              option.title === "Single Portfolio"
+                                ? "border-b border-white/20"
+                                : ""
+                            }`}
+                            onMouseEnter={() => {
+                              if (option.title === "Single Portfolio")
+                                setSinglePortfolioSubmenuOpen(true);
+                            }}
+                            onMouseLeave={() => {
+                              if (option.title === "Single Portfolio")
+                                setSinglePortfolioSubmenuOpen(false);
+                            }}
+                          >
+                            {option.title}
+                            {option.hasSubmenu && (
+                              <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                               >
-                                {item.title}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M9 5l7 7-7 7"
+                                />
+                              </svg>
+                            )}
+                          </a>
+
+                          {/* Single Portfolio Submenu */}
+                          {option.title === "Single Portfolio" &&
+                            singlePortfolioSubmenuOpen &&
+                            option.submenuItems.length > 0 && (
+                              <div
+                                className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
+                                onMouseEnter={() =>
+                                  setSinglePortfolioSubmenuOpen(true)
+                                }
+                                onMouseLeave={() =>
+                                  setSinglePortfolioSubmenuOpen(false)
+                                }
+                              >
+                                {option.submenuItems.map(
+                                  (subItem, subIndex) => (
+                                    <a
+                                      key={subIndex}
+                                      href={subItem.link}
+                                      className="block px-6 py-4 text-white hover:bg-indigo-900 transition"
+                                    >
+                                      {subItem.title}
+                                    </a>
+                                  )
+                                )}
+                              </div>
+                            )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Blog dropdown - added to match the image */}
+                <div className="relative">
+                  <a
+                    href="#"
+                    className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
+                    onMouseEnter={() => setBlogDropdownOpen(true)}
+                    onMouseLeave={() => setBlogDropdownOpen(false)}
+                  >
+                    Blog
+                  </a>
+                  {/* Blog Dropdown Menu */}
+                  {blogDropdownOpen && (
+                    <div
+                      className="absolute left-0 mt-2 w-full min-w-max bg-indigo-950 rounded-md shadow-lg py-1 z-20"
+                      onMouseEnter={() => setBlogDropdownOpen(true)}
+                      onMouseLeave={() => setBlogDropdownOpen(false)}
+                    >
+                      <div className="flex">
+                        {blogOptions.map((category, index) => (
+                          <div key={index} className="w-64 p-4">
+                            <h3 className="text-lg font-medium text-white mb-4">
+                              {category.title}
+                            </h3>
+                            <ul className="space-y-2">
+                              {category.submenuItems.map((item, itemIndex) => (
+                                <li key={itemIndex}>
+                                  <a
+                                    href={item.link}
+                                    className="block text-white/80 hover:text-white py-2"
+                                  >
+                                    {item.title}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  )}
                 </div>
-              )}
+
+                <a
+                  href="#"
+                  className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
+                >
+                  Contacts
+                </a>
+
+                {/* Search button moved to the left with logo */}
+                <button className="hidden md:block p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition">
+                  <svg
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </button>
+              </nav>
             </div>
 
-            <a
-              href="#"
-              className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-            >
-              Contacts
-            </a>
+            {/* Right side - Phone and Button */}
+            <div className="hidden md:flex items-center space-x-4">
+              <div className="hidden lg:flex items-center">
+                <div className="bg-indigo-950 rounded-full p-2 mr-2">
+                  <MdOutlinePhone size={16} className="text-white" />
+                </div>
+                <span className="text-lg font-semibold text-white">
+                  1 800 458 56 97
+                </span>
+              </div>
 
-            <button className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition">
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full transition">
+                Let's talk
+              </button>
+            </div>
+
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden p-2 rounded-md text-white"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
               <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
+                className="w-6 h-6"
                 fill="none"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
               >
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                {menuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
               </svg>
             </button>
-          </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="hidden lg:flex items-center">
-              <div className="bg-indigo-950 rounded-full p-2 mr-2">
-                <MdOutlinePhone size={16} className="text-white" />
-              </div>
-              <span className="text-lg font-semibold text-white">
-                1 800 458 56 97
-              </span>
-            </div>
-
-            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-full transition">
-              Let's talk
-            </button>
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-md text-white"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
         </div>
 
         {/* Mobile Navigation */}
