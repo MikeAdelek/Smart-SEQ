@@ -33,7 +33,7 @@ const Hero = () => {
           className="bg-cyan-400 hover:bg-cyan-500 text-white font-medium py-3 px-8 rounded-full transition"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0., delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
