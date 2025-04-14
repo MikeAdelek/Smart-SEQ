@@ -6,8 +6,8 @@ import testimonial1 from "../assets/testimonial1.jpg";
 import testimonial2 from "../assets/testimonal2.jpg";
 import testimonial3 from "../assets/testimonial3.jpg";
 
-import WhoAre from "../assets/Whoare.png";
-import WhoAre2 from "../assets/Whoare2.png";
+import WhoAre from "../assets/whoare.png";
+import WhoAre2 from "../assets/whoare2.png";
 
 import Brand1 from "../assets/brand1.png";
 import Brand2 from "../assets/brand2.png";
@@ -358,7 +358,7 @@ const Subscribe = () => {
         </motion.div>
       </motion.div>
       {/* WHO ARE WE */}
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto mb-24"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -366,18 +366,18 @@ const Subscribe = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          <motion.div 
+          <motion.div
             className="lg:w-1/2 mb-10 lg:mb-0 pr-0 lg:pr-12"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ 
-              duration: 0.8, 
-              type: "spring", 
-              stiffness: 100 
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
             }}
           >
-            <motion.div 
+            <motion.div
               className="mb-2 text-indigo-900 font-medium"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -386,7 +386,7 @@ const Subscribe = () => {
             >
               WHO WE ARE
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl font-bold text-indigo-950 mb-6"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -395,7 +395,7 @@ const Subscribe = () => {
             >
               We provide best digital services
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-gray-500 mb-8"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -405,34 +405,35 @@ const Subscribe = () => {
               Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
               aspernatur aut odit aut fugit sed quia.
             </motion.p>
-            <motion.button 
+            <motion.button
               className="px-8 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-full font-medium"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+                boxShadow:
+                  "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
               }}
               whileTap={{ scale: 0.95 }}
             >
               Discover Now
             </motion.button>
           </motion.div>
-    
-          <motion.div 
+
+          <motion.div
             className="lg:w-1/2 relative"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ 
-              duration: 0.8, 
-              type: "spring", 
-              stiffness: 100 
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              stiffness: 100
             }}
           >
-            <motion.div 
+            <motion.div
               className="relative z-10"
               initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -445,13 +446,13 @@ const Subscribe = () => {
                 className="rounded-xl shadow-lg"
               />
             </motion.div>
-            <motion.div 
+            <motion.div
               className="absolute top-0 right-0 transform translate-x-8 -translate-y-8 z-0"
               initial={{ x: 60, y: -40, opacity: 0 }}
               whileInView={{ x: 32, y: -32, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ 
-                delay: 0.5, 
+              transition={{
+                delay: 0.5,
                 duration: 0.8,
                 type: "spring",
                 stiffness: 100,
@@ -464,7 +465,7 @@ const Subscribe = () => {
                 className="rounded-xl shadow-lg"
               />
             </motion.div>
-            <motion.div 
+            <motion.div
               className="absolute -bottom-4 -right-4 z-20"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 0.5 }}
@@ -473,7 +474,7 @@ const Subscribe = () => {
             >
               <div className="w-16 h-16 bg-blue-200 rounded-full"></div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="absolute -top-8 -left-8 z-20"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 0.5 }}
@@ -487,7 +488,7 @@ const Subscribe = () => {
       </motion.div>
 
       {/* Client Logo Section */}
-      <motion.div 
+      <motion.div
         className="max-w-6xl mx-auto mb-16"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -497,22 +498,22 @@ const Subscribe = () => {
         <div className="overflow-hidden">
           <div className="flex flex-wrap md:flex-nowrap justify-center items-center gap-8 md:gap-12">
             {logos.map((logo, index) => (
-              <motion.div 
-                key={logo.id} 
+              <motion.div
+                key={logo.id}
                 className="flex items-center justify-center"
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  delay: 0.1 * index, 
+                transition={{
+                  delay: 0.1 * index,
                   duration: 0.5,
                   type: "spring",
                   stiffness: 100
                 }}
               >
-                <motion.div 
+                <motion.div
                   className="opacity-50 hover:opacity-100 transition-opacity duration-300"
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     opacity: 1,
                     transition: { duration: 0.2 }
