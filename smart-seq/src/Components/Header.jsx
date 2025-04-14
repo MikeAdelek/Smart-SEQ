@@ -1,132 +1,50 @@
 import React, { useState } from "react";
-import {
-  MdOutlinePhone,
-  MdOutlineShoppingCartCheckout,
-  MdMonitor
-} from "react-icons/md";
+import { Link } from "react-router-dom";
+import { MdOutlinePhone } from "react-icons/md";
 import Hero from "./Hero";
-import BG from "../assets/team-business-colleagues-enjoying-vr-experience.jpg";
+import BG from "../assets/nobody-artwork-studio-with-creativity-equipment.jpg";
 import SEQ from "../assets/cropped-favicon.webp";
+import {
+  portfolioOptions,
+  agencyOptions,
+  pagesOptions,
+  blogOptions
+} from "../utils/details";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [homeDropdownOpen, setHomeDropdownOpen] = useState(false);
-  const [pagesDropdownOpen, setPagesDropdownOpen] = useState(false);
-  const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
-  const [blogDropdownOpen, setBlogDropdownOpen] = useState(false);
-  const [aboutSubmenuOpen, setAboutSubmenuOpen] = useState(false);
-  const [servicesSubmenuOpen, setServicesSubmenuOpen] = useState(false);
-  const [toolsSubmenuOpen, setToolsSubmenuOpen] = useState(false);
-  const [singlePortfolioSubmenuOpen, setSinglePortfolioSubmenuOpen] =
-    useState(false);
+  // Consolidate all state into a single object
+  const [state, setState] = useState({
+    // Main menu state
+    menuOpen: false,
 
-  // Mobile menu state
-  const [mobileHomeDropdown, setMobileHomeDropdown] = useState(false);
-  const [mobilePagesDropdown, setMobilePagesDropdown] = useState(false);
-  const [mobilePortfolioDropdown, setMobilePortfolioDropdown] = useState(false);
-  const [mobileBlogDropdown, setMobileBlogDropdown] = useState(false);
-  const [mobileAboutSubmenu, setMobileAboutSubmenu] = useState(false);
-  const [mobileServicesSubmenu, setMobileServicesSubmenu] = useState(false);
-  const [mobileToolsSubmenu, setMobileToolsSubmenu] = useState(false);
-  const [mobileSinglePortfolioSubmenu, setMobileSinglePortfolioSubmenu] =
-    useState(false);
+    // Desktop dropdown states
+    homeDropdownOpen: false,
+    pagesDropdownOpen: false,
+    portfolioDropdownOpen: false,
+    blogDropdownOpen: false,
+    aboutSubmenuOpen: false,
+    singlePortfolioSubmenuOpen: false,
+    servicesSubmenuOpen: false,
+    toolsSubmenuOpen: false,
 
-  const agencyOptions = [
-    { title: "SEO Company", link: "#" },
-    { title: "Marketing Agency", link: "#" },
-    { title: "Creative Agency", link: "#" },
-    { title: "Advertising Agency", link: "#" }
-  ];
+    // Mobile dropdown states
+    mobileHomeDropdown: false,
+    mobilePagesDropdown: false,
+    mobilePortfolioDropdown: false,
+    mobileBlogDropdown: false,
+    mobileAboutSubmenu: false,
+    mobileServicesSubmenu: false,
+    mobileToolsSubmenu: false,
+    mobileSinglePortfolioSubmenu: false
+  });
 
-  const pagesOptions = [
-    {
-      title: "About",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: [
-        { title: "About – Agency", link: "#" },
-        { title: "About – Personal", link: "#" }
-      ]
-    },
-    {
-      title: "Services",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: []
-    },
-    { title: "Our Team", link: "#" },
-    { title: "FAQ", link: "#" },
-    { title: "Pricing", link: "#" },
-    {
-      title: "Tools",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: []
-    }
-  ];
-
-  const portfolioOptions = [
-    { title: "Portfolio 1", link: "#" },
-    { title: "Portfolio 2", link: "#" },
-    { title: "Portfolio 3", link: "#" },
-    { title: "Portfolio 4", link: "#" },
-    { title: "Portfolio 5", link: "#" },
-    { title: "Portfolio 6", link: "#" },
-    {
-      title: "Single Portfolio",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: [
-        { title: "Style 1", link: "#" },
-        { title: "Style 2", link: "#" },
-        { title: "Style 3", link: "#" },
-        { title: "Style 4", link: "#" },
-        { title: "Style 5", link: "#" }
-      ]
-    }
-  ];
-
-  const blogOptions = [
-    {
-      title: "Blog Styles 1",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: [
-        { title: "Blog Standard", link: "#" },
-        { title: "Blog List", link: "#" },
-        { title: "Masonry 2 Columns", link: "#" },
-        { title: "Masonry 3 Columns", link: "#" },
-        { title: "Masonry 4 Columns", link: "#" }
-      ]
-    },
-    {
-      title: "Blog Styles 2",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: [
-        { title: "Blog Grid 3 Columns", link: "#" },
-        { title: "Blog Grid 4 Columns", link: "#" },
-        { title: "Blog Portfolio 3 Columns", link: "#" },
-        { title: "Blog Portfolio 4 Columns", link: "#" }
-      ]
-    },
-    {
-      title: "Single Post",
-      link: "#",
-      hasSubmenu: true,
-      submenuItems: [
-        { title: "Style 1", link: "#" },
-        { title: "Style 2", link: "#" },
-        { title: "Style 3", link: "#" },
-        { title: "Video Post", link: "#" },
-        { title: "Audio Post", link: "#" },
-        { title: "With Sidebar", link: "#" }
-      ]
-    }
-  ];
+  // Helper function to update state
+  const updateState = (newState) => {
+    setState((prevState) => ({ ...prevState, ...newState }));
+  };
 
   return (
-    <div className="relative min-h-[42rem]">
+    <div className="relative min-h-[90vh] font-display overflow-hidden">
       <img
         src={BG}
         alt="Background"
@@ -154,17 +72,23 @@ const Header = () => {
                   <a
                     href="#"
                     className="text-white border-b-2 border-white font-medium inline-flex items-center hover:border-b-2 hover:border-white"
-                    onMouseEnter={() => setHomeDropdownOpen(true)}
-                    onMouseLeave={() => setHomeDropdownOpen(false)}
+                    onMouseEnter={() => updateState({ HomeDropdownOpen: true })}
+                    onMouseLeave={() =>
+                      updateState({ HomeDropdownOpen: false })
+                    }
                   >
                     Home
                   </a>
                   {/* Home Dropdown Menu */}
-                  {homeDropdownOpen && (
+                  {state.homeDropdownOpen && (
                     <div
                       className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                      onMouseEnter={() => setHomeDropdownOpen(true)}
-                      onMouseLeave={() => setHomeDropdownOpen(false)}
+                      onMouseEnter={() =>
+                        updateState({ homeDropdownMenu: true })
+                      }
+                      onMouseLeave={() =>
+                        updateState({ homeDropdownMenu: false })
+                      }
                     >
                       {agencyOptions.map((option, index) => (
                         <a
@@ -188,17 +112,25 @@ const Header = () => {
                   <a
                     href="#"
                     className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                    onMouseEnter={() => setPagesDropdownOpen(true)}
-                    onMouseLeave={() => setPagesDropdownOpen(false)}
+                    onMouseEnter={() =>
+                      updateState({ pagesDropdownOpen: true })
+                    }
+                    onMouseLeave={() =>
+                      updateState({ pagesDropdownOpen: false })
+                    }
                   >
                     Pages
                   </a>
                   {/* Pages Dropdown Menu */}
-                  {pagesDropdownOpen && (
+                  {state.pagesDropdownOpen && (
                     <div
                       className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                      onMouseEnter={() => setPagesDropdownOpen(true)}
-                      onMouseLeave={() => setPagesDropdownOpen(false)}
+                      onMouseEnter={() =>
+                        updateState({ pagesDropdownOpen: true })
+                      }
+                      onMouseLeave={() =>
+                        updateState({ pagesDropdownOpen: false })
+                      }
                     >
                       {pagesOptions.map((option, index) => (
                         <div key={index} className="relative">
@@ -207,19 +139,19 @@ const Header = () => {
                             className={`flex justify-between items-center px-6 py-4 text-white hover:bg-indigo-900 transition`}
                             onMouseEnter={() => {
                               if (option.title === "About")
-                                setAboutSubmenuOpen(true);
+                                updateState({ aboutSubmenuOpen: true });
                               if (option.title === "Services")
-                                setServicesSubmenuOpen(true);
+                                updateState({ servicesSubmenuOpen: true });
                               if (option.title === "Tools")
-                                setToolsSubmenuOpen(true);
+                                updateState({ toolsSubmenuOpen: true });
                             }}
                             onMouseLeave={() => {
                               if (option.title === "About")
-                                setAboutSubmenuOpen(false);
+                                updateState({ aboutSubmenuOpen: false });
                               if (option.title === "Services")
-                                setServicesSubmenuOpen(false);
+                                updateState({ servicesSubmenuOpen: false });
                               if (option.title === "Tools")
-                                setToolsSubmenuOpen(false);
+                                updateState({ toolsSubmenuOpen: false });
                             }}
                           >
                             {option.title}
@@ -242,12 +174,16 @@ const Header = () => {
 
                           {/* About Submenu */}
                           {option.title === "About" &&
-                            aboutSubmenuOpen &&
+                            state.aboutSubmenuOpen &&
                             option.submenuItems.length > 0 && (
                               <div
                                 className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
-                                onMouseEnter={() => setAboutSubmenuOpen(true)}
-                                onMouseLeave={() => setAboutSubmenuOpen(false)}
+                                onMouseEnter={() =>
+                                  updateState({ aboutSubmenuOpen: true })
+                                }
+                                onMouseLeave={() =>
+                                  updateState({ aboutSubmenuOpen: false })
+                                }
                               >
                                 {option.submenuItems.map(
                                   (subItem, subIndex) => (
@@ -273,17 +209,25 @@ const Header = () => {
                   <a
                     href="#"
                     className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                    onMouseEnter={() => setPortfolioDropdownOpen(true)}
-                    onMouseLeave={() => setPortfolioDropdownOpen(false)}
+                    onMouseEnter={() =>
+                      updateState({ PortfolioDropdownOpen: true })
+                    }
+                    onMouseLeave={() =>
+                      updateState({ PortfolioDropdownOpen: false })
+                    }
                   >
                     Portfolio
                   </a>
                   {/* Portfolio Dropdown Menu */}
-                  {portfolioDropdownOpen && (
+                  {state.portfolioDropdownOpen && (
                     <div
                       className="absolute left-0 mt-2 w-64 bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                      onMouseEnter={() => setPortfolioDropdownOpen(true)}
-                      onMouseLeave={() => setPortfolioDropdownOpen(false)}
+                      onMouseEnter={() =>
+                        updateState({ PortfolioDropdownOpen: true })
+                      }
+                      onMouseLeave={() =>
+                        updateState({ PortfolioDropdownOpen: false })
+                      }
                     >
                       {portfolioOptions.map((option, index) => (
                         <div key={index} className="relative">
@@ -296,11 +240,15 @@ const Header = () => {
                             }`}
                             onMouseEnter={() => {
                               if (option.title === "Single Portfolio")
-                                setSinglePortfolioSubmenuOpen(true);
+                                updateState({
+                                  singlePortfolioSubmenuOpen: true
+                                });
                             }}
                             onMouseLeave={() => {
                               if (option.title === "Single Portfolio")
-                                setSinglePortfolioSubmenuOpen(false);
+                                updateState({
+                                  singlePortfolioSubmenuOpen: false
+                                });
                             }}
                           >
                             {option.title}
@@ -323,15 +271,19 @@ const Header = () => {
 
                           {/* Single Portfolio Submenu */}
                           {option.title === "Single Portfolio" &&
-                            singlePortfolioSubmenuOpen &&
+                            state.singlePortfolioSubmenuOpen &&
                             option.submenuItems.length > 0 && (
                               <div
                                 className="absolute left-full top-0 w-64 bg-indigo-950 rounded-md shadow-lg py-1"
                                 onMouseEnter={() =>
-                                  setSinglePortfolioSubmenuOpen(true)
+                                  updateState({
+                                    singlePortfolioSubmenuOpen: true
+                                  })
                                 }
                                 onMouseLeave={() =>
-                                  setSinglePortfolioSubmenuOpen(false)
+                                  updateState({
+                                    singlePortfolioSubmenuOpen: false
+                                  })
                                 }
                               >
                                 {option.submenuItems.map(
@@ -358,17 +310,23 @@ const Header = () => {
                   <a
                     href="#"
                     className="text-white/80 hover:text-white hover:border-b-2 hover:border-white transition"
-                    onMouseEnter={() => setBlogDropdownOpen(true)}
-                    onMouseLeave={() => setBlogDropdownOpen(false)}
+                    onMouseEnter={() => updateState({ BlogDropdownOpen: true })}
+                    onMouseLeave={() =>
+                      updateState({ BlogDropdownOpen: false })
+                    }
                   >
                     Blog
                   </a>
                   {/* Blog Dropdown Menu */}
-                  {blogDropdownOpen && (
+                  {state.blogDropdownOpen && (
                     <div
                       className="absolute left-0 mt-2 w-full min-w-max bg-indigo-950 rounded-md shadow-lg py-1 z-20"
-                      onMouseEnter={() => setBlogDropdownOpen(true)}
-                      onMouseLeave={() => setBlogDropdownOpen(false)}
+                      onMouseEnter={() =>
+                        updateState({ BlogDropdownOpen: true })
+                      }
+                      onMouseLeave={() =>
+                        updateState({ BlogDropdownOpen: false })
+                      }
                     >
                       <div className="flex">
                         {blogOptions.map((category, index) => (
@@ -439,7 +397,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 rounded-md text-white"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => updateState({ menuOpen: !state.menuOpen })}
             >
               <svg
                 className="w-6 h-6"
@@ -447,7 +405,7 @@ const Header = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {menuOpen ? (
+                {state.menuOpen ? (
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -468,18 +426,20 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {menuOpen && (
+        {state.menuOpen && (
           <nav className="md:hidden bg-black/70 backdrop-blur-sm px-4 pt-2 pb-4">
             {/* Mobile Home with dropdown */}
             <div>
               <button
                 className="flex items-center justify-between w-full py-2 text-white font-medium"
-                onClick={() => setMobileHomeDropdown(!mobileHomeDropdown)}
+                onClick={() =>
+                  updateState({ mobileHomeDropdown: !mobileHomeDropdown })
+                }
               >
                 Home
                 <svg
                   className={`w-4 h-4 ml-1 transform ${
-                    mobileHomeDropdown ? "rotate-180" : ""
+                    state.mobileHomeDropdown ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -494,7 +454,7 @@ const Header = () => {
                 </svg>
               </button>
 
-              {mobileHomeDropdown && (
+              {state.mobileHomeDropdown && (
                 <div className="pl-4 py-1 bg-indigo-900/50 rounded mt-1 mb-2">
                   {agencyOptions.map((option, index) => (
                     <a
@@ -517,12 +477,14 @@ const Header = () => {
             <div>
               <button
                 className="flex items-center justify-between w-full py-2 text-white/80"
-                onClick={() => setMobilePagesDropdown(!mobilePagesDropdown)}
+                onClick={() =>
+                  updateState({ mobilePagesDropdow: !mobilePagesDropdown })
+                }
               >
                 Pages
                 <svg
                   className={`w-4 h-4 ml-1 transform ${
-                    mobilePagesDropdown ? "rotate-180" : ""
+                    state.mobilePagesDropdown ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -537,7 +499,7 @@ const Header = () => {
                 </svg>
               </button>
 
-              {mobilePagesDropdown && (
+              {state.mobilePagesDropdown && (
                 <div className="pl-4 py-1 bg-indigo-900/50 rounded mt-1 mb-2">
                   {pagesOptions.map((option, index) => (
                     <div key={index}>
@@ -545,11 +507,17 @@ const Header = () => {
                         className="flex items-center justify-between w-full py-2 text-white/90 hover:text-white"
                         onClick={() => {
                           if (option.title === "About")
-                            setMobileAboutSubmenu(!mobileAboutSubmenu);
+                            updateState({
+                              mobileAboutSubmenu: !mobileAboutSubmenu
+                            });
                           if (option.title === "Services")
-                            setMobileServicesSubmenu(!mobileServicesSubmenu);
+                            updateState({
+                              mobileServicesSubmenu: !mobileServicesSubmenu
+                            });
                           if (option.title === "Tools")
-                            setMobileToolsSubmenu(!mobileToolsSubmenu);
+                            updateState({
+                              mobileToolsSubmenu: !mobileToolsSubmenu
+                            });
                         }}
                       >
                         {option.title}
@@ -557,10 +525,11 @@ const Header = () => {
                           <svg
                             className={`w-4 h-4 ml-1 transform ${
                               (option.title === "About" &&
-                                mobileAboutSubmenu) ||
+                                state.mobileAboutSubmenu) ||
                               (option.title === "Services" &&
-                                mobileServicesSubmenu) ||
-                              (option.title === "Tools" && mobileToolsSubmenu)
+                                state.mobileServicesSubmenu) ||
+                              (option.title === "Tools" &&
+                                state.mobileToolsSubmenu)
                                 ? "rotate-180"
                                 : ""
                             }`}
@@ -580,7 +549,7 @@ const Header = () => {
 
                       {/* Mobile About Submenu */}
                       {option.title === "About" &&
-                        mobileAboutSubmenu &&
+                        state.mobileAboutSubmenu &&
                         option.submenuItems.length > 0 && (
                           <div className="pl-4 py-1 bg-indigo-900/30 rounded mt-1 mb-2">
                             {option.submenuItems.map((subItem, subIndex) => (
@@ -605,13 +574,15 @@ const Header = () => {
               <button
                 className="flex items-center justify-between w-full py-2 text-white/80"
                 onClick={() =>
-                  setMobilePortfolioDropdown(!mobilePortfolioDropdown)
+                  updateState({
+                    mobilePortfolioDropdown: !mobilePortfolioDropdown
+                  })
                 }
               >
                 Portfolio
                 <svg
                   className={`w-4 h-4 ml-1 transform ${
-                    mobilePortfolioDropdown ? "rotate-180" : ""
+                    state.mobilePortfolioDropdown ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -626,7 +597,7 @@ const Header = () => {
                 </svg>
               </button>
 
-              {mobilePortfolioDropdown && (
+              {state.mobilePortfolioDropdown && (
                 <div className="pl-4 py-1 bg-indigo-900/50 rounded mt-1 mb-2">
                   {portfolioOptions.map((option, index) => (
                     <div key={index}>
@@ -635,15 +606,18 @@ const Header = () => {
                           <button
                             className="flex items-center justify-between w-full py-2 text-white/90 hover:text-white"
                             onClick={() =>
-                              setMobileSinglePortfolioSubmenu(
-                                !mobileSinglePortfolioSubmenu
-                              )
+                              updateState({
+                                mobileSinglePortfolioSubmenu:
+                                  !mobileSinglePortfolioSubmenu
+                              })
                             }
                           >
                             {option.title}
                             <svg
                               className={`w-4 h-4 ml-1 transform ${
-                                mobileSinglePortfolioSubmenu ? "rotate-180" : ""
+                                state.mobileSinglePortfolioSubmenu
+                                  ? "rotate-180"
+                                  : ""
                               }`}
                               fill="none"
                               stroke="currentColor"
@@ -658,7 +632,7 @@ const Header = () => {
                             </svg>
                           </button>
 
-                          {mobileSinglePortfolioSubmenu && (
+                          {state.mobileSinglePortfolioSubmenu && (
                             <div className="pl-4 py-1 bg-indigo-900/30 rounded mt-1 mb-2">
                               {option.submenuItems.map((subItem, subIndex) => (
                                 <a
@@ -690,12 +664,14 @@ const Header = () => {
             <div>
               <button
                 className="flex items-center justify-between w-full py-2 text-white/80"
-                onClick={() => setMobileBlogDropdown(!mobileBlogDropdown)}
+                onClick={() =>
+                  updateState({ mobileBlogDropdown: !mobileBlogDropdown })
+                }
               >
                 Blog
                 <svg
                   className={`w-4 h-4 ml-1 transform ${
-                    mobileBlogDropdown ? "rotate-180" : ""
+                    state.mobileBlogDropdown ? "rotate-180" : ""
                   }`}
                   fill="none"
                   stroke="currentColor"
@@ -710,7 +686,7 @@ const Header = () => {
                 </svg>
               </button>
 
-              {mobileBlogDropdown && (
+              {state.mobileBlogDropdown && (
                 <div className="pl-4 py-1 bg-indigo-900/50 rounded mt-1 mb-2">
                   {blogOptions.map((category, index) => (
                     <div key={index} className="mb-4">
