@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BsArrowUpCircleFill } from "react-icons/bs";
 import { MdOutlineShoppingCartCheckout, MdMonitor } from "react-icons/md";
 import { LuMessageCircleMore } from "react-icons/lu";
+import { motion } from "framer-motion";
 import AboutImage1 from "../assets/about1.png";
 import AboutImage2 from "../assets/about2.png";
 
@@ -39,9 +40,14 @@ const AboutSection = () => {
   return (
     <div className="font-sans bg-gray-100 min-h-screen relative z-50">
       {/* Small dot navigation indicator at top */}
-      <div className="flex justify-center pt-6">
+      <motion.div
+        className="flex justify-center pt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="h-2 w-2 bg-black rounded-full"></div>
-      </div>
+      </motion.div>
 
       {/* Main content section */}
       <div className="container max-w-7xl mx-auto px-4 py-16 md:py-24">
@@ -49,44 +55,94 @@ const AboutSection = () => {
           {/* Left side - Overlapping images */}
           <div className="w-full md:w-1/2 relative mb-12 md:mb-0">
             {/* First image (person in orange) */}
-            <div className="rounded-3xl overflow-hidden shadow-lg max-w-sm">
+            <motion.div
+              className="rounded-3xl overflow-hidden shadow-lg max-w-sm"
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: 0.2
+              }}
+            >
               <img
                 src={AboutImage1}
                 alt="Person in orange top"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </motion.div>
 
             {/* Second image (person with laptop) - positioned to overlap */}
-            <div className="rounded-3xl overflow-hidden shadow-lg max-w-sm absolute top-1/4 left-1/4 md:top-1/3 md:left-1/3">
+            <motion.div
+              className="rounded-3xl overflow-hidden shadow-lg max-w-sm absolute top-1/4 left-1/4 md:top-1/3 md:left-1/3"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: 0.5
+              }}
+            >
               <img
                 src={AboutImage2}
                 alt="Person working on laptop"
                 className="w-full h-full object-cover"
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* Right side - Text content */}
-          <div className="w-full md:w-1/2 md:pl-12">
-            <p className="uppercase text-sm font-semibold tracking-wide text-gray-700 mb-2">
+          <motion.div
+            className="w-full md:w-1/2 md:pl-12"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <motion.p
+              className="uppercase text-sm font-semibold tracking-wide text-gray-700 mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               CREATIVE AGENCY
-            </p>
+            </motion.p>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-indigo-950 leading-tight mb-6">
+            <motion.h2
+              className="text-4xl md:text-5xl font-bold text-indigo-950 leading-tight mb-6"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               We help your
               <br />
               business grow
-            </h2>
+            </motion.h2>
 
-            <p className="text-gray-600 mb-10">
+            <motion.p
+              className="text-gray-600 mb-10"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
               Dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
               aspernatur aut odit aut fugit, sed quia.
-            </p>
+            </motion.p>
 
             {/* Feature 1 */}
-            <div className="flex items-start mb-8">
-              <div className="bg-gray-200 p-3 rounded-lg mr-4">
+            <motion.div
+              className="flex items-start mb-8"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.div
+                className="bg-gray-200 p-3 rounded-lg mr-4"
+                whileHover={{
+                  scale: 1.05,
+                  rotate: [0, 5, -5, 0],
+                  transition: { duration: 0.5 }
+                }}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="46.749"
@@ -261,7 +317,7 @@ const AboutSection = () => {
                     </g>
                   </g>
                 </svg>
-              </div>
+              </motion.div>
               <div>
                 <h3 className="text-xl font-semibold text-indigo-950 mb-2">
                   Creative design
@@ -270,7 +326,7 @@ const AboutSection = () => {
                   Natus error sit voluptatem accus antium doloremque.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Feature 2 */}
             <div className="flex items-start">
@@ -319,7 +375,7 @@ const AboutSection = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
