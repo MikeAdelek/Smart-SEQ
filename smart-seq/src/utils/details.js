@@ -1,34 +1,34 @@
 // home downdrop navbar
 export const agencyOptions = [
-  { title: "SEO Company", link: "#" },
-  { title: "Marketing Agency", link: "#" },
-  { title: "Creative Agency", link: "#" },
-  { title: "Advertising Agency", link: "#" }
+  { title: "SEO Company", to: "#" },
+  { title: "Marketing Agency", to: "#" },
+  { title: "Creative Agency", to: "#" },
+  { title: "Advertising Agency", to: "#" }
 ];
 
 // page downdrop navbar
 export const pagesOptions = [
   {
     title: "About",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: [
-      { title: "About – Agency", link: "#" },
-      { title: "About – Personal", link: "#" }
+      { title: "About – Agency", to: "#" },
+      { title: "About – Personal", to: "#" }
     ]
   },
   {
     title: "Services",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: []
   },
-  { title: "Our Team", link: "#" },
-  { title: "FAQ", link: "#" },
-  { title: "Pricing", link: "#" },
+  { title: "Our Team", to: "#" },
+  { title: "FAQ", to: "#" },
+  { title: "Pricing", to: "#" },
   {
     title: "Tools",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: []
   }
@@ -36,22 +36,22 @@ export const pagesOptions = [
 
 //portfolio ddowndop menu
 export const portfolioOptions = [
-  { title: "Portfolio 1", link: "#" },
-  { title: "Portfolio 2", link: "#" },
-  { title: "Portfolio 3", link: "#" },
-  { title: "Portfolio 4", link: "#" },
-  { title: "Portfolio 5", link: "#" },
-  { title: "Portfolio 6", link: "#" },
+  { title: "Portfolio 1", to: "#" },
+  { title: "Portfolio 2", to: "#" },
+  { title: "Portfolio 3", to: "#" },
+  { title: "Portfolio 4", to: "#" },
+  { title: "Portfolio 5", to: "#" },
+  { title: "Portfolio 6", to: "#" },
   {
     title: "Single Portfolio",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: [
-      { title: "Style 1", link: "#" },
-      { title: "Style 2", link: "#" },
-      { title: "Style 3", link: "#" },
-      { title: "Style 4", link: "#" },
-      { title: "Style 5", link: "#" }
+      { title: "Style 1", to: "#" },
+      { title: "Style 2", to: "#" },
+      { title: "Style 3", to: "#" },
+      { title: "Style 4", to: "#" },
+      { title: "Style 5", to: "#" }
     ]
   }
 ];
@@ -60,38 +60,38 @@ export const portfolioOptions = [
 export const blogOptions = [
   {
     title: "Blog Styles 1",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: [
-      { title: "Blog Standard", link: "#" },
-      { title: "Blog List", link: "#" },
-      { title: "Masonry 2 Columns", link: "#" },
-      { title: "Masonry 3 Columns", link: "#" },
-      { title: "Masonry 4 Columns", link: "#" }
+      { title: "Blog Standard", to: "#" },
+      { title: "Blog List", to: "#" },
+      { title: "Masonry 2 Columns", to: "#" },
+      { title: "Masonry 3 Columns", to: "#" },
+      { title: "Masonry 4 Columns", to: "#" }
     ]
   },
   {
     title: "Blog Styles 2",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: [
-      { title: "Blog Grid 3 Columns", link: "#" },
-      { title: "Blog Grid 4 Columns", link: "#" },
-      { title: "Blog Portfolio 3 Columns", link: "#" },
-      { title: "Blog Portfolio 4 Columns", link: "#" }
+      { title: "Blog Grid 3 Columns", to: "#" },
+      { title: "Blog Grid 4 Columns", to: "#" },
+      { title: "Blog Portfolio 3 Columns", to: "#" },
+      { title: "Blog Portfolio 4 Columns", to: "#" }
     ]
   },
   {
     title: "Single Post",
-    link: "#",
+    to: "#",
     hasSubmenu: true,
     submenuItems: [
-      { title: "Style 1", link: "#" },
-      { title: "Style 2", link: "#" },
-      { title: "Style 3", link: "#" },
-      { title: "Video Post", link: "#" },
-      { title: "Audio Post", link: "#" },
-      { title: "With Sidebar", link: "#" }
+      { title: "Style 1", to: "#" },
+      { title: "Style 2", to: "#" },
+      { title: "Style 3", to: "#" },
+      { title: "Video Post", to: "#" },
+      { title: "Audio Post", to: "#" },
+      { title: "With Sidebar", to: "#" }
     ]
   }
 ];

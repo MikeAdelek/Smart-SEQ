@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <main className="relative min-h-[90vh] font-display">
-      <div className="container mx-auto px-6 py-14 md:max-w-3xl lg:max-w-4xl">
+      <div className="container mx-auto px-6 py-24 md:max-w-3xl lg:max-w-4xl">
         <div className="flex flex-col items-center text-center">
           <motion.h1
             className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6"

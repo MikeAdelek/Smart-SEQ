@@ -1,17 +1,19 @@
 import React from "react";
-import Hero from "./Components/Hero";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Gallery from "./Components/Gallery";
+import Article from "./Components/Article";
+import Subscribe from "./Components/Subscribe";
 import AboutSection from "./Components/AboutSection";
 import CreativeSolutions from "./Components/CreativeSolutions";
-import Gallery from "./Components/Gallery";
-import Subscribe from "./Components/Subscribe";
-import Article from "./Components/Article";
-import Footer from "./Components/Footer";
 
 function App() {
   return (
     <>
-      <Header />
+      <Routes>
+        <Route path="/" element={<Header />} />
+      </Routes>
       <AboutSection />
       <CreativeSolutions />
       <Gallery />
